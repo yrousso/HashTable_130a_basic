@@ -1,6 +1,7 @@
 #include <iostream>
 #include "HashTable.h"
-
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 HashTable::HashTable(int size){
 	this->size = size;
 	table.resize(size);
@@ -52,10 +53,16 @@ void HashTable::parseIPtoArray(std::string ip_stream)
 void HashTable::generateCoeff(){
 	// use math.rand()
 	//for now hardcode values
-	this->a1 = 10;
+	srand (time(0));
+	this->a1 = rand() % size + 1;
+	this->a2 = rand() % size + 1;
+	this->a3 = rand() % size + 1;
+	this->a4 = rand() % size + 1;
+	/*this->a1 = 10;
 	this->a2 = 89;
 	this->a3 = 210;
 	this->a4 = 162;
+	*/
 }
 
 bool HashTable::exists(std::string name){
